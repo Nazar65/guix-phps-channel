@@ -1,0 +1,4 @@
+;; -*- mode: scheme; -*-
+(channel  (version 0)
+	  (url "https://github.com/Nazar65/guix-phps-channel")) ; the primary URL
+

@@ -68,7 +68,7 @@
                                   "php-" version ".tar.xz"))
               (sha256
                (base32
-                "409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903"))
+                "0nwx0kah9svx1qgcb042lh2hgn5c2s4rrp88mccw3ni0nri9yl8r"))
               (modules '((guix build utils)))
               (snippet
                '(with-directory-excursion "ext"

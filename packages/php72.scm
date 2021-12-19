@@ -66,7 +66,7 @@
               (method url-fetch)
               (uri (string-append home-page "releases/"
                                   "php-" version ".tar.xz"))
-              (sha256 "409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903"))
+              (sha256 "409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903")
               (modules '((guix build utils)))
               (snippet
                '(with-directory-excursion "ext"

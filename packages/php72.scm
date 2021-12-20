@@ -35,8 +35,6 @@
   #:use-module (gnu packages dbm)
   #:use-module (gnu packages fontutils)
   #:use-module (gnu packages gd)
-  #:use-module (gnu packages libpng)
-  #:use-module (gnu packages libjpeg)
   #:use-module (gnu packages gettext)
   #:use-module (gnu packages glib)
   #:use-module (gnu packages gnupg)
@@ -85,8 +83,7 @@
 						  ;;"bcmath/libbcmath"g
 						  ;;"pcre/pcre2lib"
 						  ;;"fileinfo/libmagic" ; a patched version of libmagic
-						  '("gd/libgd"
-						    "xmlrpc/libxmlrpc"))
+						  '("xmlrpc/libxmlrpc"))
 					#t))))
    (build-system gnu-build-system)
    (arguments
@@ -116,6 +113,7 @@
               (with "--with-zlib-dir" "zlib")
 	      (with "--with-png-dir" "libpng")
 	      (with "--with-jpeg-dir" "libjpeg")
+	      (with "--with-xpm-dir" "libxpm")
 	      ;; We could add "--with-snmp", but it requires netsnmp that
               ;; we don't have a package for. It is used to build the snmp
               ;; extension of php.
@@ -246,6 +244,12 @@
 					       ;; Here, gd quits immediately after "fatal libpng error"; while the
 					       ;; test expects it to additionally return a "setjmp" error and warning.
 					       "ext/gd/tests/bug39780_extern.phpt"
+					       "ext/gd/tests/bug47946.phpt"
+					       "ext/gd/tests/bug66590.phpt"
+					       "ext/gd/tests/bug70102.phpt"
+					       "ext/gd/tests/bug73869.phpt"
+					       "ext/gd/tests/bug77479.phpt"
+					       "ext/gd/tests/webp_basic.phpt"
 					       "ext/gd/tests/libgd00086_extern.phpt"
 					       ;; Extra newline in gd-png output.
 					       "ext/gd/tests/bug45799.phpt"
@@ -370,6 +374,7 @@
       ("libgcrypt" ,libgcrypt)
       ("libpng" ,libpng)
       ("libjpeg" ,libjpeg)
+      ("libxpm" ,libxpm)
       ("libsodium" ,libsodium)
       ("libxml2" ,libxml2)
       ("libxslt" ,libxslt)

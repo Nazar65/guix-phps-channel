@@ -114,6 +114,7 @@
 	      (with "--with-png-dir" "libpng")
 	      (with "--with-jpeg-dir" "libjpeg")
 	      (with "--with-xpm-dir" "libxpm")
+	      (with "--with-freetype-dir" "freetype")
 	      ;; We could add "--with-snmp", but it requires netsnmp that
               ;; we don't have a package for. It is used to build the snmp
               ;; extension of php.
@@ -374,6 +375,7 @@
       ("libgcrypt" ,libgcrypt)
       ("libpng" ,libpng)
       ("libjpeg" ,libjpeg)
+      ("freetype" ,freetype)
       ("libxpm" ,libxpm)
       ("libsodium" ,libsodium)
       ("libxml2" ,libxml2)

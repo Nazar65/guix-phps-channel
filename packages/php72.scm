@@ -83,7 +83,8 @@
 						  ;;"bcmath/libbcmath"g
 						  ;;"pcre/pcre2lib"
 						  ;;"fileinfo/libmagic" ; a patched version of libmagic
-						  '("xmlrpc/libxmlrpc"))
+						  '("gd/libgd"
+						    "xmlrpc/libxmlrpc"))
 					#t))))
    (build-system gnu-build-system)
    (arguments
@@ -120,6 +121,7 @@
               "--with-mysqli"          ; Required for, e.g. wordpress
               "--with-pdo-mysql"
               "--with-zip"
+	      "--with-gd"
               "--with-zlib"
 	      "--with-sodium"
               "--enable-bcmath"        ; Required for, e.g. Zabbix frontend

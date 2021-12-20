@@ -72,7 +72,8 @@
               "00wr6zc24y7f0ls0yiw1fkhq3zfx43463g24ziyp061cday137j0"))
             (modules '((guix build utils)))
 	    (patches
-	     (search-patches "patches/libicu.patch"))
+	     (search-patches "patches/libicu.patch"
+			     "patches/gdlib.patch"))
             (snippet
              '(with-directory-excursion "ext"
 					(for-each delete-file-recursively
@@ -110,8 +111,8 @@
               (with "--with-sqlite3" "sqlite")
               (with "--with-tidy" "tidy")
               (with "--with-xsl" "libxslt")
-	      (with "--with-png-dir" "#t")
               (with "--with-zlib-dir" "zlib")
+	      (with "--with-png-dir" "libpng")
               ;; We could add "--with-snmp", but it requires netsnmp that
               ;; we don't have a package for. It is used to build the snmp
               ;; extension of php.

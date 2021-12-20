@@ -122,6 +122,7 @@
               "--with-pdo-mysql"
               "--with-zip"
 	      "--with-gd"
+	      "--with-libpng"
               "--with-zlib"
 	      "--with-sodium"
               "--enable-bcmath"        ; Required for, e.g. Zabbix frontend

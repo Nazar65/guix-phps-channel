@@ -83,8 +83,7 @@
 						  ;;"bcmath/libbcmath"g
 						  ;;"pcre/pcre2lib"
 						  ;;"fileinfo/libmagic" ; a patched version of libmagic
-						  '("gd/libgd"
-						    "xmlrpc/libxmlrpc"))
+						  '("xmlrpc/libxmlrpc"))
 					#t))))
    (build-system gnu-build-system)
    (arguments
@@ -133,6 +132,7 @@
 	      "--enable-libxml"
 	      "--enable-simplexml"
 	      "--enable-sodium"
+	      "--enable-soap"
 	      "--enable-xmlwriter"
 	      "--enable-xsl"
 	      "--enable-zip"

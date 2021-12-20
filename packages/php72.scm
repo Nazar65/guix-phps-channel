@@ -35,6 +35,8 @@
   #:use-module (gnu packages dbm)
   #:use-module (gnu packages fontutils)
   #:use-module (gnu packages gd)
+  #:use-module (gnu packages libpng)
+  #:use-module (gnu packages libjpeg)
   #:use-module (gnu packages gettext)
   #:use-module (gnu packages glib)
   #:use-module (gnu packages gnupg)
@@ -72,8 +74,7 @@
               "00wr6zc24y7f0ls0yiw1fkhq3zfx43463g24ziyp061cday137j0"))
             (modules '((guix build utils)))
 	    (patches
-	     (search-patches "patches/libicu.patch"
-			     "patches/gdlib.patch"))
+	     (search-patches "patches/libicu.patch"))
             (snippet
              '(with-directory-excursion "ext"
 					(for-each delete-file-recursively
@@ -111,20 +112,19 @@
               (with "--with-sqlite3" "sqlite")
               (with "--with-tidy" "tidy")
               (with "--with-xsl" "libxslt")
+	      (with "--with-gd" "gd")
               (with "--with-zlib-dir" "zlib")
 	      (with "--with-png-dir" "libpng")
-              ;; We could add "--with-snmp", but it requires netsnmp that
+	      (with "--with-jpeg-dir" "libjpeg")
+	      ;; We could add "--with-snmp", but it requires netsnmp that
               ;; we don't have a package for. It is used to build the snmp
               ;; extension of php.
               "--with-external-pcre"
-              "--with-external-gd"
               "--with-iconv"
               "--with-openssl"
               "--with-mysqli"          ; Required for, e.g. wordpress
               "--with-pdo-mysql"
               "--with-zip"
-	      "--with-gd"
-	      "--with-libpng"
               "--with-zlib"
 	      "--with-sodium"
               "--enable-bcmath"        ; Required for, e.g. Zabbix frontend
@@ -149,7 +149,6 @@
               "--enable-flatfile"
               "--enable-fpm"
               "--enable-ftp"
-              "--enable-gd"
               "--enable-inifile"
               "--enable-intl"
               "--enable-mbstring"
@@ -370,6 +369,7 @@
       ("icu4c" ,icu4c)
       ("libgcrypt" ,libgcrypt)
       ("libpng" ,libpng)
+      ("libjpeg" ,libjpeg)
       ("libsodium" ,libsodium)
       ("libxml2" ,libxml2)
       ("libxslt" ,libxslt)

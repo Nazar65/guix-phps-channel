@@ -57,7 +57,7 @@
 	 (replace 'install
            (lambda* (#:key outputs #:allow-other-keys)
              (let* ((out (assoc-ref outputs "out"))
-                    (bin (string-append out "/bin"))
+                    (bin (string-append out "/bin")))
 	       (mkdir-p bin)
 	       (copy-file "composer.phar" (string-append bin  "/composer"))
 	       (chmod (string-append bin  "/composer") #o755)

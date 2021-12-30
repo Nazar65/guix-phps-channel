@@ -144,6 +144,7 @@
 	      "--enable-lib-openssl"
 	      "--enable-fileinfo"
               "--enable-dba=shared"
+	      "--enable-debug"
               "--enable-exif"
               "--enable-flatfile"
               "--enable-fpm"

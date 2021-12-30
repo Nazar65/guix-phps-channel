@@ -76,13 +76,6 @@
             (snippet
              '(with-directory-excursion "ext"
 					(for-each delete-file-recursively
-						  ;; Some of the bundled libraries have no proper upstream.
-						  ;; Ideally we'd extract these out as separate packages:
-						  ;;"mbstring/libmbfl"
-						  ;;"date/lib"
-						  ;;"bcmath/libbcmath"g
-						  ;;"pcre/pcre2lib"
-						  ;;"fileinfo/libmagic" ; a patched version of libmagic
 						  '("xmlrpc/libxmlrpc"))
 					#t))))
    (build-system gnu-build-system)
@@ -144,7 +137,6 @@
 	      "--enable-lib-openssl"
 	      "--enable-fileinfo"
               "--enable-dba=shared"
-	      "--enable-debug"
               "--enable-exif"
               "--enable-flatfile"
               "--enable-fpm"

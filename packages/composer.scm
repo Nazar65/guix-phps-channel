@@ -59,7 +59,9 @@
              (let* ((out (assoc-ref outputs "out"))
                     (bin (string-append out "/bin")))
 	       (mkdir-p bin)
-	       (copy-file "composer.phar" (string-append bin  "/composer"))
+	       (install-file "./composer.phar" bin)
+	       (with-directory-excursion bin
+                   (rename-file "composer.phar" "composer"))
 	       (chmod (string-append bin  "/composer") #o755)
              #t))))
        #:parallel-build? #f

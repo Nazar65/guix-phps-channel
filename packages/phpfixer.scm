@@ -65,8 +65,7 @@
        #:parallel-build? #f
        #:tests? #f)) ; There are no tests.
     (inputs
-     `(("composer" ,composer1)
-      ))
+     `(("composer" ,composer)))
     (home-page "https://github.com/FriendsOfPHP/PHP-CS-Fixer/")
     (synopsis "The PHP Coding Standards Fixer (PHP CS Fixer)")
     (description

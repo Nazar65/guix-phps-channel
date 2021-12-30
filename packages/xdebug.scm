@@ -61,9 +61,8 @@
 	  (add-before 'install 'move-xdebug-extension
 	    (lambda* (#:key outputs #:allow-other-keys)
 	      (let* ((out (assoc-ref outputs "out"))
-		     (modules (string-append out "/modules")))
-		(mkdir-p modules)
-	      (copy-file "./modules/xdebug.so" (string-append modules "/xdebug.so"))))))
+		     (lib (string-append out "/lib")))
+		(install-file "./modules/xdebug.so" lib)))))
        #:parallel-build? #f
        #:tests? #f))
      (native-inputs

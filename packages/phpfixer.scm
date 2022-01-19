@@ -24,10 +24,10 @@
 
 (define-module (packages phpfixer)
   #:use-module (guix packages)
-  #:use-module (packages composer)
+  #:use-module (packages php72)
   #:use-module (guix build-system gnu)
   #:use-module (gnu packages)
-  #:use-module (guix git-download)
+  #:use-module (guix download)
   #:use-module (guix licenses)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages pkg-config)
@@ -36,15 +36,15 @@
 (define-public phpfixer
   (package
     (name "phpfixer")
-    (version "3.4.0")
+    (version "3.0.0")
     (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "https://github.com/FriendsOfPHP/PHP-CS-Fixer/")
-                    (commit "47177af1cfb9dab5d1cc4daf91b7179c2efe7fad")))
-              (sha256
+              (method url-fetch)
+	      (uri
+	       (string-append "https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v" version "/php-cs-fixer.phar"))
+	      (file-name "php-cs-fixer.phar")
+	      (sha256
                (base32
-                "1w23vajn0g7q9my680ydjq70ywpqw0xi92k5slrg65d2si9x2wmf"))))
+		"141rkcr0wbsqnc4s5vg4bk4dmxwigwxa3j0vi5c42b5k1lq3sgwr"))))
     (build-system gnu-build-system)
     (arguments
      `(#:phases
@@ -55,20 +55,17 @@
            (lambda* (#:key outputs #:allow-other-keys)
              (let* ((out (assoc-ref outputs "out"))
                     (bin (string-append out "/bin"))
-		    (vendor (string-append out "/vendor"))
-                    (executable "php-cs-fixer"))
-	       (mkdir-p vendor)
-	       (copy-recursively "./" out)
-               (install-file executable bin)
-	       (invoke "composer" "install"))
+                    (executable "php-cs-fixer.phar"))
+	       (install-file executable bin)
+	       (with-directory-excursion bin
+                 (rename-file "php-cs-fixer.phar" "php-cs-fixer"))
+	         (chmod (string-append bin  "/php-cs-fixer") #o755))
              #t)))
        #:parallel-build? #f
        #:tests? #f)) ; There are no tests.
-    (inputs
-     `(("composer" ,composer)))
-    (home-page "https://github.com/FriendsOfPHP/PHP-CS-Fixer/")
-    (synopsis "The PHP Coding Standards Fixer (PHP CS Fixer)")
-    (description
-     "This tool fixes your code to follow standards; whether you want to follow PHP coding standards as defined in the PSR-1, PSR-2, etc., or other community driven ones like the Symfony one. You can also define your (team's) style through configuration.")
-    (license (non-copyleft "file://COPYING"
-                           "See COPYING file in the distribution."))))
+  (home-page "https://github.com/FriendsOfPHP/PHP-CS-Fixer/")
+  (synopsis "The PHP Coding Standards Fixer (PHP CS Fixer)")
+  (description
+   "This tool fixes your code to follow standards; whether you want to follow PHP coding standards as defined in the PSR-1, PSR-2, etc., or other community driven ones like the Symfony one. You can also define your (team's) style through configuration.")
+  (license (non-copyleft "file://COPYING"
+                         "See COPYING file in the distribution."))))

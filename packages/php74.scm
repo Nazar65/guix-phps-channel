@@ -61,7 +61,7 @@
 (define-public php74
   (package
     (name "php74")
-    (version "7.4.20")
+    (version "7.4.25")
     (home-page "https://secure.php.net/")
     (source (origin
               (method url-fetch)
@@ -69,7 +69,7 @@
                                   "php-" version ".tar.xz"))
               (sha256
                (base32
-                "0db3nqfbfqfd8fkvrw1k8l6698qcbzv1v5j8rgr0ny0dg6k6r90z"))
+                "02iw75niazf3zh3ry15k5yjy6ivg49rwzlr8g8w49rgyszqmi9qj"))
               (modules '((guix build utils)))
               (snippet
                '(with-directory-excursion "ext"
@@ -239,6 +239,13 @@
                          "ext/standard/tests/strings/setlocale_basic2.phpt"
                          "ext/standard/tests/strings/setlocale_basic3.phpt"
                          "ext/standard/tests/strings/setlocale_variation1.phpt"
+			 "ext/dom/tests/DOMDocument_loadXML_error1.phpt"
+			 "ext/dom/tests/DOMDocument_load_error1.phpt"
+			 "ext/dom/tests/bug43364.phpt"
+			 "ext/dom/tests/bug80268.phpt"
+			 "ext/libxml/tests/bug61367-read.phpt"
+			 "ext/libxml/tests/libxml_disable_entity_loader.phpt"
+			 "ext/openssl/tests/openssl_x509_checkpurpose_basic.phpt"
                          ;; This failing test is skipped on PHP's Travis CI as it is
                          ;; supposedly inaccurate.
                          "ext/standard/tests/file/disk_free_space_basic.phpt"

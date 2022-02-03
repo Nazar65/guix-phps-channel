@@ -26,7 +26,6 @@
   #:use-module (guix packages)
   #:use-module (guix build-system gnu)
   #:use-module (gnu packages)
-  #:use-module (packages php72)
   #:use-module (guix download)
   #:use-module (guix licenses)
   #:use-module (gnu packages compression)
@@ -41,10 +40,10 @@
               (method url-fetch)
 	      (uri
 	       (string-append "https://getcomposer.org/download/" version "/composer.phar"))
-	        (file-name "composer.phar")
+	      (file-name "composer.phar")
 	      (sha256
-             (base32
-              "14582f6466fvb8hjrd02lrkajsaf46h4kpa903xyrmbgvmmf2b2l"))))
+               (base32
+		"14582f6466fvb8hjrd02lrkajsaf46h4kpa903xyrmbgvmmf2b2l"))))
     (build-system gnu-build-system)
     (arguments
      `(#:phases
@@ -61,15 +60,26 @@
 	       (mkdir-p bin)
 	       (install-file "./composer.phar" bin)
 	       (with-directory-excursion bin
-                   (rename-file "composer.phar" "composer"))
+                 (rename-file "composer.phar" "composer"))
 	       (chmod (string-append bin  "/composer") #o755)
-             #t))))
+               #t))))
        #:parallel-build? #f
        #:tests? #f))
-    (inputs
-     `(("php" ,php72)))
     (home-page "https://getcomposer.org/")
     (synopsis "Composer helps you declare, manage, and install dependencies of PHP projects.")
     (description "See https://getcomposer.org/ for more information and documentation.")
     (license (non-copyleft "file://COPYING"
                            "See COPYING file in the distribution."))))
+
+(define-public composer2
+  (package/inherit composer
+		   (name "composer2")
+		   (version "2.2.5")
+		   (source (origin
+			     (method url-fetch)
+			     (uri
+			      (string-append "https://getcomposer.org/download/" version "/composer.phar"))
+			     (file-name "composer.phar")
+			     (sha256
+			      (base32
+			       "1wy3jsff9cjrhh8m2pqramhxyl7b00xz0nbnbbqdcmy9f1531vw1"))))))

@@ -74,3 +74,17 @@
     (description "See https://xdebug.org/ for more information and documentation.")
     (license (non-copyleft "file://COPYING"
                            "See COPYING file in the distribution."))))
+
+(define-public php74-xdebug
+  (package/inherit
+   php72-xdebug
+   (name "php74-xdebug")
+   (version "2.9.8")
+   (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/xdebug/xdebug/")
+                    (commit "3e09864af111d63b7eb486d88bfc6eb7d6429b85")))
+	      (sha256
+               (base32
+		"0mdd0qi1swbfq88hp6ps2vhcdacqqiy55shw7ks3bjibbfhsmdf5"))))))

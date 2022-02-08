@@ -27,6 +27,7 @@
   #:use-module (guix build-system gnu)
   #:use-module (gnu packages)
   #:use-module (packages php72)
+  #:use-module (packages php74)
   #:use-module (guix git-download)
   #:use-module (guix licenses)
   #:use-module (gnu packages autotools)
@@ -34,9 +35,9 @@
   #:use-module (gnu packages pkg-config)
   #:use-module ((guix licenses) #:prefix license:))
 
-(define-public php72-xdebug
+(define-public xdebug3
   (package
-    (name "php72-xdebug")
+    (name "xdebug3")
     (version "3.1.2")
     (source (origin
               (method git-fetch)
@@ -68,17 +69,17 @@
      (native-inputs
      `(("autoconf" ,autoconf)))
     (inputs
-     `(("php" ,php72)))
+     `(("php" ,php74)))
     (home-page "https://xdebug.org/")
     (synopsis "Xdebug is an extension for PHP, and provides a range of features to improve the PHP development experience.")
     (description "See https://xdebug.org/ for more information and documentation.")
     (license (non-copyleft "file://COPYING"
                            "See COPYING file in the distribution."))))
 
-(define-public php74-xdebug
+(define-public xdebug2
   (package/inherit
-   php72-xdebug
-   (name "php74-xdebug")
+   xdebug3
+   (name "xdebug2")
    (version "2.9.8")
    (source (origin
               (method git-fetch)
@@ -87,4 +88,7 @@
                     (commit "3e09864af111d63b7eb486d88bfc6eb7d6429b85")))
 	      (sha256
                (base32
-		"0mdd0qi1swbfq88hp6ps2vhcdacqqiy55shw7ks3bjibbfhsmdf5"))))))
+		"0mdd0qi1swbfq88hp6ps2vhcdacqqiy55shw7ks3bjibbfhsmdf5"))))
+   (inputs
+     `(("php" ,php72)))
+   ))

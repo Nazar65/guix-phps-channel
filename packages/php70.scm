@@ -301,6 +301,8 @@
 			 "ext/openssl/tests/stream_verify_peer_name_002.phpt"
 			 "ext/openssl/tests/stream_verify_peer_name_003.phpt"
 			 "ext/openssl/tests/openssl_x509_checkpurpose_basic.phpt"
+			 "ext/mbstring/tests/mb_ereg_replace_variation1.phpt"
+			 "ext/mbstring/tests/mb_ereg_variation3.phpt"
 			 "ext/intl/tests/breakiter_getLocale_basic2.phpt"
 			 "ext/intl/tests/bug62070_2.phpt"
 			 "ext/intl/tests/bug74230.phpt"

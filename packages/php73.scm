@@ -73,7 +73,74 @@
               (base32
                "1k4hbchjn0qnm6whfgb09gn7qza41ynp0avaa6lisf1kx76sqvhn"))))
    (arguments
-    `(#:phases
+    `(#:configure-flags
+       (let-syntax ((with (syntax-rules ()
+                            ((_ option input)
+                             (string-append option "="
+                                            (assoc-ref %build-inputs input))))))
+         (list (with "--with-bz2" "bzip2")
+               (with "--with-curl" "curl")
+               (with "--with-gdbm" "gdbm")
+               (with "--with-gettext" "glibc") ; libintl.h
+               (with "--with-gmp" "gmp")
+               (with "--with-ldap" "openldap")
+               (with "--with-ldap-sasl" "cyrus-sasl")
+               (with "--with-pdo-pgsql" "postgresql")
+               (with "--with-pdo-sqlite" "sqlite")
+               (with "--with-pgsql" "postgresql")
+               ;; PHP’s Pspell extension, while retaining its current name,
+               ;; now uses the Aspell library.
+               (with "--with-pspell" "aspell")
+               (with "--with-readline" "readline")
+               (with "--with-sqlite3" "sqlite")
+               (with "--with-tidy" "tidy")
+               (with "--with-xsl" "libxslt")
+               (with "--with-zlib-dir" "zlib")
+               ;; We could add "--with-snmp", but it requires netsnmp that
+               ;; we don't have a package for. It is used to build the snmp
+               ;; extension of php.
+               "--with-external-pcre"
+               "--with-external-gd"
+               "--with-iconv"
+               "--with-openssl"
+               "--with-mysqli"          ; Required for, e.g. wordpress
+               "--with-pdo-mysql"
+               "--with-zip"
+               "--with-zlib"
+	       "--with-sodium"
+               "--enable-bcmath"        ; Required for, e.g. Zabbix frontend
+               "--enable-calendar"
+	       "--enable-iconv"
+	       "--enable-ctype"
+	       "--enable-dom"
+	       "--enable-json"
+	       "--enable-hash"
+	       "--enable-libxml"
+	       "--enable-mbstring"
+	       "--enable-openssl"
+	       "--enable-prce"
+	       "--enable-pdo_mysql"
+	       "--enable-simplexml"
+	       "--enable-sodium"
+	       "--enable-xmlwriter"
+	       "--enable-xsl"
+	       "--enable-zip"
+	       "--enable-libxml"
+	       "--enable-lib-openssl"
+	       "--enable-fileinfo"
+               "--enable-dba=shared"
+               "--enable-exif"
+               "--enable-flatfile"
+               "--enable-fpm"
+               "--enable-ftp"
+	       "--enable-soap"
+               "--enable-gd"
+               "--enable-inifile"
+               "--enable-intl"
+               "--enable-mbstring"
+               "--enable-pcntl"
+               "--enable-sockets"))
+      #:phases
       (modify-phases %standard-phases
 	(add-after 'unpack 'do-not-record-build-flags
 	  (lambda _

@@ -61,7 +61,7 @@
 (define-public php74
   (package
     (name "php74")
-    (version "7.4.25")
+    (version "7.4.3")
     (home-page "https://secure.php.net/")
     (source (origin
               (method url-fetch)
@@ -69,8 +69,10 @@
                                   "php-" version ".tar.xz"))
               (sha256
                (base32
-                "02iw75niazf3zh3ry15k5yjy6ivg49rwzlr8g8w49rgyszqmi9qj"))
+                "0alqqs5hn4jmz1adrbysbw92n55nkw6f9vfivqj829kwhxnqa7yg"))
               (modules '((guix build utils)))
+	      (patches
+	       (search-patches "patches/php74.patch"))
               (snippet
                '(with-directory-excursion "ext"
                   (for-each delete-file-recursively
@@ -236,13 +238,18 @@
                          "ext/standard/tests/network/getprotobynumber_basic.phpt"
                          ;; And exotic locales.
                          "ext/standard/tests/strings/setlocale_basic1.phpt"
+			 "ext/intl/tests/locale_filter_matches3.phpt"
+			 "ext/intl/tests/locale_get_display_name7.phpt"
+			 "ext/intl/tests/rbbiter_getBinaryRules_basic2.phpt"
+			 "ext/intl/tests/rbbiter_getRules_basic2.phpt"
+			 "ext/intl/tests/locale_lookup_variant2.phpt"
+			 "ext/intl/tests/locale_get_display_language.phpt"
                          "ext/standard/tests/strings/setlocale_basic2.phpt"
                          "ext/standard/tests/strings/setlocale_basic3.phpt"
                          "ext/standard/tests/strings/setlocale_variation1.phpt"
 			 "ext/dom/tests/DOMDocument_loadXML_error1.phpt"
 			 "ext/dom/tests/DOMDocument_load_error1.phpt"
 			 "ext/dom/tests/bug43364.phpt"
-			 "ext/dom/tests/bug80268.phpt"
 			 "ext/libxml/tests/bug61367-read.phpt"
 			 "ext/libxml/tests/libxml_disable_entity_loader.phpt"
 			 "ext/openssl/tests/openssl_x509_checkpurpose_basic.phpt"
@@ -350,20 +357,8 @@
                          "ext/standard/tests/file/bug43008.phpt"
                          ;; Table data not created in sqlite(?).
                          "ext/pdo_sqlite/tests/bug_42589.phpt"
-                         ;; Expects an Array with 3 preg_matches; gets 0.
-                         "ext/pcre/tests/bug79846.phpt"
-                         ;; Expects an empty Array; gets one with " " in it.
-                         "ext/pcre/tests/bug80118.phpt"
                          ;; Renicing a process fails in the build environment.
                          "ext/standard/tests/general_functions/proc_nice_basic.phpt"))
-
-             ;; Accomodate two extra openssl errors flanking the expected one:
-             ;; random number generator:RAND_{load,write}_file:Cannot open file
-             ;; This is due to an invalid $HOME, but changing it in the test
-             ;; still prints the first one & changing it globally is overkill.
-             (substitute* "ext/openssl/tests/bug80747.phpt"
-               ((".*error:%s:key size too small.*" match)
-                (string-append "%s\n" match "%s\n")))
 
              ;; Skip tests requiring network access.
              (setenv "SKIP_ONLINE_TESTS" "1")

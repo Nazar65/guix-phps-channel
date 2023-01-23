@@ -25,3 +25,4 @@ To use this channel, add to your ~/.config/guix/channels.scm:
 #+end_src
 
 Then run ~guix pull~ to be able to install packages.
+

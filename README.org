@@ -18,7 +18,7 @@ To use this channel, add to your ~/.config/guix/channels.scm:
     (url "https://github.com/Nazar65/guix-phps-channel")
     (introduction
       (make-channel-introduction
-	"31844889740501a6c80c0ba2f13b623bb95d5c10"
+	"958ef78dee9edf32d73288bfad7c723a84fd8a04"
 	(openpgp-fingerprint
 	 "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490"))))
 	 %default-channels)

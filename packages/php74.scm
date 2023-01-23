@@ -239,6 +239,8 @@
                          "ext/standard/tests/network/getprotobynumber_basic.phpt"
                          ;; And exotic locales.
                          "ext/standard/tests/strings/setlocale_basic1.phpt"
+			 "sapi/fpm/tests/socket-ipv4-fallback.phpt"
+			 "ext/ftp/tests/ftp_site_basic.phpt"
 			 "ext/intl/tests/locale_filter_matches3.phpt"
 			 "ext/intl/tests/locale_get_display_name7.phpt"
 			 "ext/intl/tests/rbbiter_getBinaryRules_basic2.phpt"

@@ -20,7 +20,7 @@ To use this channel, add to your ~/.config/guix/channels.scm:
       (make-channel-introduction
 	"958ef78dee9edf32d73288bfad7c723a84fd8a04"
 	(openpgp-fingerprint
-	 "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490"))))
+	 "4441 0743 6E32 EE9F F20A  753F B510 AA5B 74EA F294"))))
 	 %default-channels)
 #+end_src
 

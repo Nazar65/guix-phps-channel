@@ -61,7 +61,7 @@
 (define-public php81
   (package
     (name "php81")
-    (version "8.1.12")
+    (version "8.1.14")
     (home-page "https://secure.php.net/")
     (source (origin
               (method url-fetch)
@@ -69,7 +69,7 @@
                                   "php-" version ".tar.xz"))
               (sha256
                (base32
-                "1axv3g2vzx0izf9mprnh4skyrlh8bz0yv7i6h8h88k90w9ck6908"))
+                "06jaf845l9mnbz39h30i50c2rx29xj9cwj687a8qb1nmfal4fvp1"))
               (modules '((guix build utils)))
 	      (snippet
                '(with-directory-excursion "ext"

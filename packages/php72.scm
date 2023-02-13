@@ -367,7 +367,7 @@
       ("icu4c" ,icu4c)
       ("libgcrypt" ,libgcrypt)
       ("libpng" ,libpng)
-      ("libjpeg" ,libjpeg)
+      ("libjpeg" ,libjpeg-turbo)
       ("freetype" ,freetype)
       ("libxpm" ,libxpm)
       ("libsodium" ,libsodium)

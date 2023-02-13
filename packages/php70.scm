@@ -369,7 +369,7 @@
        ("glibc" ,glibc)
        ("gmp" ,gmp)
        ("libgcrypt" ,libgcrypt)
-       ("libjpeg" ,libjpeg)
+       ("libjpeg" ,libjpeg-turbo)
        ("icu4c" ,icu4c)
        ("libpng" ,libpng)
        ("libwebp" ,libwebp)

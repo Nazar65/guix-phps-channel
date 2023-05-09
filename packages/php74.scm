@@ -48,7 +48,7 @@
   #:use-module (gnu packages readline)
   #:use-module (gnu packages sqlite)
   #:use-module (gnu packages textutils)
-  #:use-module (gnu packages openssl-1.1)
+  #:use-module (gnu packages crypto)
   #:use-module (gnu packages tls)
   #:use-module (gnu packages web)
   #:use-module (gnu packages xml)

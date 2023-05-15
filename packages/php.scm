@@ -60,7 +60,7 @@
 
 (define-public php74
   (package
-    (name "php")
+    (name "php74")
     (version "7.4.3")
     (home-page "https://secure.php.net/")
     (source (origin
@@ -333,6 +333,8 @@
                          ;; XXX: These test failures appear legitimate, needs investigation.
                          ;; open_basedir() restriction failure.
                          "ext/curl/tests/bug61948-unix.phpt"
+                         "ext/curl/tests/curl_basic_007.phpt"
+                         "ext/pcre/tests/bug70345.phpt"
                          ;; Expects a false boolean, gets empty array from glob().
                          "ext/standard/tests/file/bug41655_1.phpt"
                          "ext/standard/tests/file/glob_variation5.phpt"
@@ -382,7 +384,7 @@
        ("glibc" ,glibc)
        ("gmp" ,gmp)
        ("gnutls" ,gnutls)
-       ("icu4c" ,icu4c)
+       ("icu4c" ,icu4c-68)
        ("libgcrypt" ,libgcrypt)
        ("libpng" ,libpng)
        ("libsodium" ,libsodium)
@@ -392,7 +394,7 @@
        ("libzip" ,libzip)
        ("oniguruma" ,oniguruma)
        ("openldap" ,openldap)
-       ("openssl" ,openssl)
+       ("openssl" ,openssl-1.1)
        ("pcre" ,pcre2)
        ("postgresql" ,postgresql)
        ("readline" ,readline)

@@ -60,7 +60,7 @@
 
 (define-public php74
   (package
-    (name "php74")
+    (name "php")
     (version "7.4.3")
     (home-page "https://secure.php.net/")
     (source (origin

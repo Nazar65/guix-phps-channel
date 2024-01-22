@@ -577,6 +577,7 @@ systems, web content management systems and web frameworks." )
                                 "ext/standard/tests/general_functions/var_export_basic1.phpt"
                                 "ext/intl/tests/timezone_getErrorCodeMessage_basic.phpt"
                                 "ext/intl/tests/timezone_getOffset_error.phpt"
+			        "ext/curl/tests/curl_basic_009.phpt"
                                 "sapi/cli/tests/cli_process_title_unix.phpt"
                                 "sapi/cli/tests/upload_2G.phpt"
                                 "Zend/tests/concat_003.phpt")))

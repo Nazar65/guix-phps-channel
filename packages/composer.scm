@@ -43,7 +43,7 @@
 	      (file-name "composer.phar")
 	      (sha256
                (base32
-		"14582f6466fvb8hjrd02lrkajsaf46h4kpa903xyrmbgvmmf2b2l"))))
+		"055khpw0j8zmax3j9yma6qz9cdw5dnri218wiwhlnz1wqw0h4q3j"))))
     (build-system gnu-build-system)
     (arguments
      `(#:phases

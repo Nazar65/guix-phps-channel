@@ -65,7 +65,7 @@
                #t))))
        #:parallel-build? #f
        #:tests? #f))
-    (home-page "https://getcomposer.org/")
+    (home-page "https://getcomposer.org/ ")
     (synopsis "Composer helps you declare, manage, and install dependencies of PHP projects.")
     (description "See https://getcomposer.org/ for more information and documentation.")
     (license (non-copyleft "file://COPYING"

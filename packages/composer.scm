@@ -35,7 +35,7 @@
 (define-public composer
   (package
     (name "composer")
-    (version "1.10.24")
+    (version "2.6.6")
     (source (origin
               (method url-fetch)
 	      (uri
@@ -70,17 +70,3 @@
     (description "See https://getcomposer.org/ for more information and documentation.")
     (license (non-copyleft "file://COPYING"
                            "See COPYING file in the distribution."))))
-
-(define-public composer2
-  (package/inherit
-   composer
-   (name "composer2")
-   (version "2.2.5")
-   (source (origin
-	     (method url-fetch)
-	     (uri
-	      (string-append "https://getcomposer.org/download/" version "/composer.phar"))
-	     (file-name "composer.phar")
-	     (sha256
-	      (base32
-	       "1wy3jsff9cjrhh8m2pqramhxyl7b00xz0nbnbbqdcmy9f1531vw1"))))))

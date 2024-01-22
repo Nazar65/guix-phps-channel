@@ -334,6 +334,7 @@
                          ;; open_basedir() restriction failure.
                          "ext/curl/tests/bug61948-unix.phpt"
                          "ext/curl/tests/curl_basic_007.phpt"
+			 "ext/curl/tests/curl_basic_009.phpt"
                          "ext/pcre/tests/bug70345.phpt"
                          ;; Expects a false boolean, gets empty array from glob().
                          "ext/standard/tests/file/bug41655_1.phpt"

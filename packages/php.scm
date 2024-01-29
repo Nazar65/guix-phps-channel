@@ -425,7 +425,7 @@ systems, web content management systems and web frameworks." )
 (define-public php81
   (package
     (name "php")
-    (version "8.1.14")
+    (version "8.1.21")
     (home-page "https://secure.php.net/")
     (source (origin
               (method url-fetch)
@@ -433,7 +433,7 @@ systems, web content management systems and web frameworks." )
                                   "php-" version ".tar.xz"))
               (sha256
                (base32
-                "06jaf845l9mnbz39h30i50c2rx29xj9cwj687a8qb1nmfal4fvp1"))
+                "08a83i0w2lqh01xmpsdcm6vj1f17a85v77qfhjgd733a1h5s0d76"))
               (modules '((guix build utils)))
 	      (snippet
                '(with-directory-excursion "ext"

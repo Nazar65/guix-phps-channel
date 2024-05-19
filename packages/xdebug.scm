@@ -27,25 +27,25 @@
   #:use-module (guix build-system gnu)
   #:use-module (gnu packages)
   #:use-module (packages php81)
-  #:use-module (guix git-download)
+  #:use-module (guix download)
   #:use-module (guix licenses)
   #:use-module (gnu packages autotools)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages pkg-config)
   #:use-module ((guix licenses) #:prefix license:))
 
-(define-public xdebug
+(define-public xdebug-php-8.1
   (package
-    (name "xdebug")
-    (version "3.1.2")
+    (name "xdebug-php-8.1")
+    (version "3.3.2")
     (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "https://github.com/xdebug/xdebug/")
-                    (commit "52911afee0d66f4569d71d25bb9532c8fab9d5f5")))
+              (method url-fetch)
+              (uri
+               (string-append
+                    "https://github.com/xdebug/xdebug/archive/refs/tags/" version ".tar.gz"))
 	      (sha256
                (base32
-		"118sxw17g3fkd2ahyvbrnixilm4w2a92lzj1z6wws8qx8cscgdbq"))))
+		"0hq708kbbg4absq7c1sfvlvh6750jlsk1fz109ijynjdik5h284x"))))
 
     (build-system gnu-build-system)
     (arguments

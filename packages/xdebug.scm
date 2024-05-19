@@ -26,8 +26,7 @@
   #:use-module (guix packages)
   #:use-module (guix build-system gnu)
   #:use-module (gnu packages)
-  #:use-module (packages php72)
-  #:use-module (packages php74)
+  #:use-module (packages php)
   #:use-module (guix git-download)
   #:use-module (guix licenses)
   #:use-module (gnu packages autotools)
@@ -69,7 +68,7 @@
      (native-inputs
      `(("autoconf" ,autoconf)))
     (inputs
-     `(("php" ,php74)))
+     `(("php" ,php)))
     (home-page "https://xdebug.org/")
     (synopsis "Xdebug is an extension for PHP, and provides a range of features to improve the PHP development experience.")
     (description "See https://xdebug.org/ for more information and documentation.")

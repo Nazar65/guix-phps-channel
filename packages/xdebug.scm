@@ -34,9 +34,9 @@
   #:use-module (gnu packages pkg-config)
   #:use-module ((guix licenses) #:prefix license:))
 
-(define-public xdebug3
+(define-public xdebug
   (package
-    (name "xdebug3")
+    (name "xdebug")
     (version "3.1.2")
     (source (origin
               (method git-fetch)
@@ -74,20 +74,3 @@
     (description "See https://xdebug.org/ for more information and documentation.")
     (license (non-copyleft "file://COPYING"
                            "See COPYING file in the distribution."))))
-
-(define-public xdebug2
-  (package/inherit
-   xdebug3
-   (name "xdebug2")
-   (version "2.9.8")
-   (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "https://github.com/xdebug/xdebug/")
-                    (commit "3e09864af111d63b7eb486d88bfc6eb7d6429b85")))
-	      (sha256
-               (base32
-		"0mdd0qi1swbfq88hp6ps2vhcdacqqiy55shw7ks3bjibbfhsmdf5"))))
-   (inputs
-     `(("php" ,php72)))
-   ))

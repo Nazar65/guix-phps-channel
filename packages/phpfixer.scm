@@ -24,7 +24,6 @@
 
 (define-module (packages phpfixer)
   #:use-module (guix packages)
-  #:use-module (packages php72)
   #:use-module (guix build-system gnu)
   #:use-module (gnu packages)
   #:use-module (guix download)
@@ -36,7 +35,7 @@
 (define-public phpfixer
   (package
     (name "phpfixer")
-    (version "3.0.0")
+    (version "3.57.1")
     (source (origin
               (method url-fetch)
 	      (uri
@@ -44,7 +43,7 @@
 	      (file-name "php-cs-fixer.phar")
 	      (sha256
                (base32
-		"141rkcr0wbsqnc4s5vg4bk4dmxwigwxa3j0vi5c42b5k1lq3sgwr"))))
+		"08dhckg0726h45vhjd39nl3mvy8yk3r4mfpc7jk62pyipwnw2pd2"))))
     (build-system gnu-build-system)
     (arguments
      `(#:phases

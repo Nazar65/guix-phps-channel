@@ -385,7 +385,7 @@
        ("glibc" ,glibc)
        ("gmp" ,gmp)
        ("gnutls" ,gnutls)
-       ("icu4c" ,icu4c-68)
+       ("icu4c" ,icu4c-69)
        ("libgcrypt" ,libgcrypt)
        ("libpng" ,libpng)
        ("libsodium" ,libsodium)

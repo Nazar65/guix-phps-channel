@@ -26,7 +26,7 @@
   #:use-module (guix packages)
   #:use-module (guix build-system gnu)
   #:use-module (gnu packages)
-  #:use-module (packages php81)
+  #:use-module (php81)
   #:use-module (guix download)
   #:use-module (guix licenses)
   #:use-module (gnu packages autotools)

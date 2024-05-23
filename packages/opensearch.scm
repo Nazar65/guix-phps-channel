@@ -49,8 +49,8 @@
        (modify-phases %standard-phases)
        #:parallel-build? #f
        #:tests? #f))
-    (home-page "https://github.com/opensearch-project ")
-    (synopsis "Composer helps you declare, manage, and install dependencies of PHP projects.")
+    (home-page "https://github.com/opensearch-project")
+    (synopsis "OpenSearch is a community-driven, Apache 2.0-licensed open source search and analytics suite")
     (description "OpenSearch is a community-driven, Apache 2.0-licensed open source search and analytics suite that makes it easy to ingest, search, visualize, and analyze data. Developers build with OpenSearch for use cases such as application search, log analytics, data observability, data ingestion, and more.")
     (license (non-copyleft "file://COPYING"
                            "See COPYING file in the distribution."))))

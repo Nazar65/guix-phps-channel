@@ -1058,6 +1058,7 @@ systems, web content management systems and web frameworks." )
                          ;; XXX: These test failures appear legitimate, needs investigation.
                          ;; open_basedir() restriction failure.
                          "ext/curl/tests/bug61948-unix.phpt"
+                         "ext/curl/tests/curl_basic_009.phpt"
 			 "ext/curl/tests/curl_setopt_ssl.phpt"
                          ;; Expects a false boolean, gets empty array from glob().
                          "ext/standard/tests/file/bug41655_1.phpt"

@@ -989,7 +989,14 @@ systems, web content management systems and web frameworks." )
                          "ext/gd/tests/bug71912-mb.phpt"
                          "ext/gd/tests/bug41442.phpt"
                          "ext/gd/tests/bug38212.phpt"
-                         "ext/gd/tests/bug38212-mb.phpt"                       
+                         "ext/gd/tests/bug38212-mb.phpt"
+                         "ext/curl/tests/bug77946.phpt"
+                         "ext/gd/tests/imagegd_truecolor.phpt"
+                         "ext/gd/tests/imageinterpolation_basic.phpt"
+                         "ext/gd/tests/imagescale_preserve_ratio.phpt"
+                         "ext/gd/tests/jpg2gd-mb.phpt"
+                         "ext/gd/tests/jpg2gd.phpt"
+                         "ext/gd/tests/png2gd.phpt"
                          "ext/posix/tests/posix_getgrgid.phpt"    ; Requires /etc/group.
                          "ext/posix/tests/posix_getgrnam_basic.phpt" ; Requires /etc/group.
                          "ext/sockets/tests/bug63000.phpt"        ; Fails to detect OS.

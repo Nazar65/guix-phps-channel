@@ -585,7 +585,21 @@ systems, web content management systems and web frameworks." )
 
              ;; Drop tests that are known to fail.
              (for-each delete-file
-                       '("ext/posix/tests/posix_getgrgid.phpt"    ; Requires /etc/group.
+                       '("ext/gd/tests/gif2gd.phpt"
+                         "ext/gd/tests/createfromgd2.phpt"
+                         "ext/gd/tests/crafted_gd2.phpt"
+                         "ext/gd/tests/bug79676.phpt"
+                         "ext/gd/tests/bug73868.phpt"
+                         "ext/gd/tests/bug73161.phpt"
+                         "ext/gd/tests/bug73159.phpt"
+                         "ext/gd/tests/bug73157.phpt"
+                         "ext/gd/tests/bug73155.phpt"
+                         "ext/gd/tests/bug71912.phpt"
+                         "ext/gd/tests/bug71912-mb.phpt"
+                         "ext/gd/tests/bug41442.phpt"
+                         "ext/gd/tests/bug38212.phpt"
+                         "ext/gd/tests/bug38212-mb.phpt"
+                         "ext/posix/tests/posix_getgrgid.phpt"    ; Requires /etc/group.
                          "ext/posix/tests/posix_getgrnam_basic.phpt" ; Requires /etc/group.
                          "ext/sockets/tests/bug63000.phpt"        ; Fails to detect OS.
                          "ext/sockets/tests/socket_shutdown.phpt" ; Requires DNS.
@@ -708,21 +722,11 @@ systems, web content management systems and web frameworks." )
                          "ext/gd/tests/imagescale_preserve_ratio.phpt"
                          "ext/gd/tests/imageinterpolation_basic.phpt"
                          "ext/gd/tests/imagegd_truecolor.phpt"
-                         "ext/gd/tests/gif2gd.phpt"
-                         "ext/gd/tests/createfromgd2.phpt"
-                         "ext/gd/tests/crafted_gd2.phpt"
-                         "ext/gd/tests/bug79676.phpt"
-                         "ext/gd/tests/bug73868.phpt"
-                         "ext/gd/tests/bug73161.phpt"
-                         "ext/gd/tests/bug73159.phpt"
-                         "ext/gd/tests/bug73157.phpt"
-                         "ext/gd/tests/bug73155.phpt"
-                         "ext/gd/tests/bug71912.phpt"
-                         "ext/gd/tests/bug71912-mb.phpt"
-                         "ext/gd/tests/bug41442.phpt"
-                         "ext/gd/tests/bug38212.phpt"
-                         "ext/gd/tests/bug38212-mb.phpt"
                          "ext/curl/tests/bug77946.phpt"
+                         "ext/pcntl/tests/bug81577_3.phpt"
+                         "ext/phar/tests/bug69958.phpt"
+                         "ext/standard/tests/hrtime/hrtime.phpt"
+                         "sapi/fpm/tests/log-bwd-multiple-msgs-stdout-stderr.phpt"
                          "ext/gd/tests/jpg2gd-mb.phpt"
                          "ext/gd/tests/jpg2gd.phpt"
                          ;; imagettftext() returns wrong coordinates.

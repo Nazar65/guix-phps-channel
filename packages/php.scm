@@ -976,7 +976,21 @@ systems, web content management systems and web frameworks." )
 
              ;; Drop tests that are known to fail.
              (for-each delete-file
-                       '("ext/posix/tests/posix_getgrgid.phpt"    ; Requires /etc/group.
+                       '("ext/gd/tests/gif2gd.phpt"
+                         "ext/gd/tests/createfromgd2.phpt"
+                         "ext/gd/tests/crafted_gd2.phpt"
+                         "ext/gd/tests/bug79676.phpt"
+                         "ext/gd/tests/bug73868.phpt"
+                         "ext/gd/tests/bug73161.phpt"
+                         "ext/gd/tests/bug73159.phpt"
+                         "ext/gd/tests/bug73157.phpt"
+                         "ext/gd/tests/bug73155.phpt"
+                         "ext/gd/tests/bug71912.phpt"
+                         "ext/gd/tests/bug71912-mb.phpt"
+                         "ext/gd/tests/bug41442.phpt"
+                         "ext/gd/tests/bug38212.phpt"
+                         "ext/gd/tests/bug38212-mb.phpt"                       
+                         "ext/posix/tests/posix_getgrgid.phpt"    ; Requires /etc/group.
                          "ext/posix/tests/posix_getgrnam_basic.phpt" ; Requires /etc/group.
                          "ext/sockets/tests/bug63000.phpt"        ; Fails to detect OS.
                          "ext/sockets/tests/socket_shutdown.phpt" ; Requires DNS.

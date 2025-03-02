@@ -11,3 +11,16 @@
  18-:-Djava.security.manager=allow
 
 Diff finished.  Sun Mar  2 20:15:15 2025
+--- /config/opensearch.yml
++++ /config/opensearch.yml
+@@ -34,7 +34,7 @@
+ #
+ # Path to log files:
+ #
+-#path.logs: /path/to/logs
++path.logs: /var/log/opensearch
+ #
+ # ----------------------------------- Memory -----------------------------------
+ #
+
+Diff finished.  Sun Mar  2 21:28:50 2025

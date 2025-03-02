@@ -46,7 +46,9 @@
                (base32
 		"0xpcqlz4y32flzhdk9a0cqlffs77rljhg32q1ssxlxl3f7dyswil"))
               (patches
-	     (search-patches "patches/opensearch.patch"))))
+	       (search-patches
+                "patches/opensearch.patch"
+                ))))
     (build-system gnu-build-system)
     (arguments
      `(#:phases

@@ -13,7 +13,12 @@
 Diff finished.  Sun Mar  2 20:15:15 2025
 --- /config/opensearch.yml
 +++ /config/opensearch.yml
-@@ -34,7 +34,7 @@
+@@ -30,11 +30,11 @@
+ #
+ # Path to directory where to store the data (separate multiple locations by comma):
+ #
+-#path.data: /path/to/data
++path.data: /var/lib/opensearch/data
  #
  # Path to log files:
  #
@@ -23,4 +28,4 @@ Diff finished.  Sun Mar  2 20:15:15 2025
  # ----------------------------------- Memory -----------------------------------
  #
 
-Diff finished.  Sun Mar  2 21:28:50 2025
+Diff finished.  Sun Mar  2 21:42:25 2025

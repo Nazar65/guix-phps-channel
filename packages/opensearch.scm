@@ -37,37 +37,6 @@
   #:use-module ((guix licenses) #:prefix license:))
 
 
-(define-public opensearch-analytics-icu
-  (package
-    (name "opensearch-analytics-icu")
-    (version "2.14.0")
-    (source (origin
-              (method url-fetch)
-	      (uri
-	       (string-append "https://artifacts.opensearch.org/releases/plugins/analysis-icu/" version "/analysis-icu-" version ".zip"))
-	      (sha256
-               (base32
-		"1xjw76bvj2sh1cl1czqk8m55f56ycnrbh1iwp6119jgxdmhg08bj"))))
-    (build-system trivial-build-system)
-    (native-inputs
-     (list unzip))
-    (outputs '("out"))
-    (arguments
-     (list
-      #:modules '((guix build utils))
-      #:builder
-      #~(begin
-          (use-modules (guix build utils))
-          (let* ((output (assoc-ref %outputs "out")))
-            (mkdir-p (string-append output "/openasearch-analytics-icu/"))
-            (invoke "unzip" "-d" (string-append output "/openasearch-analytics-icu/") (assoc-ref %build-inputs "source"))
-            ))))
-    (home-page "https://github.com/opensearch-project")
-    (synopsis "Open Source, Distributed, RESTful Search Engine")
-    (description "Opneasearch analytics plugin")
-    (license (non-copyleft "file://COPYING"
-                           "See COPYING file in the distribution."))))
-
 (define-public opensearch
   (package
     (name "opensearch")
@@ -94,6 +63,7 @@
              (let* ((out (assoc-ref outputs "out"))
                     (bin (string-append out "/bin"))
                     (icu (assoc-ref inputs "analytics-icu"))
+                    (phonetic (assoc-ref inputs "analytics-phonetic"))
                     (config (string-append out "/config"))
                     (lib (string-append out "/lib"))
                     (modules (string-append out "/modules"))
@@ -109,7 +79,9 @@
                (copy-recursively "./plugins" plugins)
 
                (mkdir-p (string-append plugins "/opensearch-analytics-icu/"))
+               (mkdir-p (string-append plugins "/opensearch-analytics-phonetic/"))
                (invoke "unzip" "-d" (string-append plugins "/opensearch-analytics-icu/") icu)
+               (invoke "unzip" "-d" (string-append plugins "/opensearch-analytics-phonetic/") phonetic)
                (wrap-program (string-append out "/bin/opensearch")
                  `("JAVA_HOME" ":" = (,(assoc-ref inputs "jdk")))
                  `("PATH" ":" prefix ,(list coreutils))
@@ -131,6 +103,13 @@
            (sha256
             (base32
              "1xjw76bvj2sh1cl1czqk8m55f56ycnrbh1iwp6119jgxdmhg08bj"))))
+       ("analytics-phonetic"
+        ,(origin
+           (method url-fetch)
+           (uri (string-append "https://artifacts.opensearch.org/releases/plugins/analysis-phonetic/" version "/analysis-phonetic-" version ".zip"))
+           (sha256
+            (base32
+             "0y22vxrchjwa3xd8zdz6g3w1q91lawbfmfax3rhybwp7zd4386rg"))))
        ("coreutils" ,coreutils)))
     (home-page "https://github.com/opensearch-project")
     (synopsis "Open Source, Distributed, RESTful Search Engine")

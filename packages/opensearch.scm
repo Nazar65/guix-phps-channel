@@ -24,7 +24,9 @@
 
 (define-module (packages opensearch)
   #:use-module (guix packages)
+  #:use-module (guix gexp)
   #:use-module (guix build-system gnu)
+  #:use-module (guix build-system trivial)
   #:use-module (gnu packages)
   #:use-module (guix download)
   #:use-module (guix licenses)
@@ -33,6 +35,38 @@
   #:use-module (gnu packages compression)
   #:use-module (gnu packages pkg-config)
   #:use-module ((guix licenses) #:prefix license:))
+
+
+(define-public opensearch-analytics-icu
+  (package
+    (name "opensearch-analytics-icu")
+    (version "2.14.0")
+    (source (origin
+              (method url-fetch)
+	      (uri
+	       (string-append "https://artifacts.opensearch.org/releases/plugins/analysis-icu/" version "/analysis-icu-" version ".zip"))
+	      (sha256
+               (base32
+		"1xjw76bvj2sh1cl1czqk8m55f56ycnrbh1iwp6119jgxdmhg08bj"))))
+    (build-system trivial-build-system)
+    (native-inputs
+     (list unzip))
+    (outputs '("out"))
+    (arguments
+     (list
+      #:modules '((guix build utils))
+      #:builder
+      #~(begin
+          (use-modules (guix build utils))
+          (let* ((output (assoc-ref %outputs "out")))
+            (mkdir-p (string-append output "/openasearch-analytics-icu/"))
+            (invoke "unzip" "-d" (string-append output "/openasearch-analytics-icu/") (assoc-ref %build-inputs "source"))
+            ))))
+    (home-page "https://github.com/opensearch-project")
+    (synopsis "Open Source, Distributed, RESTful Search Engine")
+    (description "Opneasearch analytics plugin")
+    (license (non-copyleft "file://COPYING"
+                           "See COPYING file in the distribution."))))
 
 (define-public opensearch
   (package
@@ -59,30 +93,44 @@
            (lambda* (#:key inputs outputs #:allow-other-keys)
              (let* ((out (assoc-ref outputs "out"))
                     (bin (string-append out "/bin"))
+                    (icu (assoc-ref inputs "analytics-icu"))
                     (config (string-append out "/config"))
                     (lib (string-append out "/lib"))
                     (modules (string-append out "/modules"))
                     (plugins (string-append out "/plugins"))
                     (jdk-opensearch (string-append out "/jdk"))
                     (coreutils (string-append (assoc-ref inputs "coreutils")
-                                    "/bin")))
+                                              "/bin")))
+
                (copy-recursively "./bin" bin)
                (copy-recursively "./config" config)
                (copy-recursively "./lib" lib)
                (copy-recursively "./modules" modules)
                (copy-recursively "./plugins" plugins)
+
+               (mkdir-p (string-append plugins "/opensearch-analytics-icu/"))
+               (invoke "unzip" "-d" (string-append plugins "/opensearch-analytics-icu/") icu)
                (wrap-program (string-append out "/bin/opensearch")
                  `("JAVA_HOME" ":" = (,(assoc-ref inputs "jdk")))
                  `("PATH" ":" prefix ,(list coreutils))
                  `("LD_LIBRARY_PATH" ":" prefix
-                                      (,(string-append out "plugins/opensearch-knn/lib"))))
+                   (,(string-append out "plugins/opensearch-knn/lib"))))
                (wrap-program (string-append out "/bin/opensearch-plugin")
-                 `("JAVA_HOME" ":" = (,(assoc-ref inputs "jdk"))))
+                 `("JAVA_HOME" ":" = (,(assoc-ref inputs "jdk")))               
+                 )
                ))))
        #:parallel-build? #f
        #:tests? #f))
     (inputs
      `(("jdk" ,openjdk11)
+       ("unzip" ,unzip)
+       ("analytics-icu"
+        ,(origin
+           (method url-fetch)
+           (uri (string-append "https://artifacts.opensearch.org/releases/plugins/analysis-icu/" version "/analysis-icu-" version ".zip"))
+           (sha256
+            (base32
+             "1xjw76bvj2sh1cl1czqk8m55f56ycnrbh1iwp6119jgxdmhg08bj"))))
        ("coreutils" ,coreutils)))
     (home-page "https://github.com/opensearch-project")
     (synopsis "Open Source, Distributed, RESTful Search Engine")

@@ -1,3 +1,5 @@
+* NOTE: This repository is publically archived and moved to codeberg -> https://codeberg.org/klovanych/guix-phps-channel 
+
 * guix-phps-channel
 This repository (should) contains all php's packagaes (for the Guix OS) that required for the php development.
 If some of them missing, please contact me via email nazarn96@gmail.com
